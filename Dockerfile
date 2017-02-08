@@ -1,4 +1,4 @@
-FROM php:7.1.1-cli
+FROM php:7.0.1-cli
 
 RUN apt-get update && apt-get install -y \
   git \
