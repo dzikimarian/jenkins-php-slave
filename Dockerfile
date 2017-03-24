@@ -17,7 +17,7 @@ RUN apt-get update && apt-get install -y \
   && docker-php-ext-install -j$(nproc) bcmath \
   && docker-php-ext-install -j$(nproc) exif \
   && docker-php-ext-configure intl \
-  && docker-php-ext-install intl
+  && docker-php-ext-install intl \
   && docker-php-ext-install pdo pdo_mysql pdo_sqlite
 
 RUN curl -sL https://deb.nodesource.com/setup_6.x | bash - \
