@@ -1,5 +1,6 @@
 FROM php:7.0.15-cli
 
+RUN echo deb http://http.debian.net/debian jessie-backports main >> /etc/apt/sources.list
 RUN apt-get update && apt-get install -y \
   git \
   curl \
