@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -y \
   libicu-dev \
   unzip \
   openssh-server \
-  openjdk-8-jre-headless \
+  software-properties-common \
   sqlite3 \
   libsqlite3-dev \
   && docker-php-ext-install -j$(nproc) iconv mcrypt \
@@ -20,7 +20,10 @@ RUN apt-get update && apt-get install -y \
   && docker-php-ext-install -j$(nproc) exif \
   && docker-php-ext-configure intl \
   && docker-php-ext-install intl \
-  && docker-php-ext-install pdo pdo_mysql pdo_sqlite
+  && docker-php-ext-install pdo pdo_mysql pdo_sqlite \
+  && add-apt-repository ppa:webupd8team/java \
+  && apt-get update \
+  && apt-get install oracle-java8-installer \
 
 RUN curl -sL https://deb.nodesource.com/setup_6.x | bash - \
   && apt-get install -y nodejs \
