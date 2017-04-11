@@ -1,6 +1,5 @@
 FROM php:7.0.15-cli
 
-RUN echo deb http://http.debian.net/debian jessie-backports main >> /etc/apt/sources.list
 RUN apt-get update && apt-get install -y \
   git \
   curl \
@@ -21,10 +20,11 @@ RUN apt-get update && apt-get install -y \
   && docker-php-ext-install -j$(nproc) exif \
   && docker-php-ext-configure intl \
   && docker-php-ext-install intl \
-  && docker-php-ext-install pdo pdo_mysql pdo_sqlite \
-  && add-apt-repository ppa:webupd8team/java \
-  && apt-get update \
-  && apt-get install oracle-java8-installer \
+  && docker-php-ext-install pdo pdo_mysql pdo_sqlite 
+  
+RUN echo deb http://http.debian.net/debian jessie-backports main >> /etc/apt/sources.list
+RUN apt-get update && apt-get install -t jessie-backports -y openjdk-8-jre-headless ca-certificates-java && update-alternatives --config java
+
 
 RUN curl -sL https://deb.nodesource.com/setup_6.x | bash - \
   && apt-get install -y nodejs \
