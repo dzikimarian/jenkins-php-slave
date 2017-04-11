@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -y \
   libicu-dev \
   unzip \
   openssh-server \
-  openjdk-7-jre-headless \
+  openjdk-8-jre-headless \
   sqlite3 \
   libsqlite3-dev \
   && docker-php-ext-install -j$(nproc) iconv mcrypt \
