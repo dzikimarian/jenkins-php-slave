@@ -20,7 +20,9 @@ RUN apt-get update && apt-get install -y \
   && docker-php-ext-install -j$(nproc) exif \
   && docker-php-ext-configure intl \
   && docker-php-ext-install intl \
-  && docker-php-ext-install pdo pdo_mysql pdo_sqlite 
+  && docker-php-ext-install pdo pdo_mysql pdo_sqlite \
+  && pecl install xdebug-2.5.0 \
+  && docker-php-ext-enable xdebug
   
 RUN echo deb http://http.debian.net/debian jessie-backports main >> /etc/apt/sources.list
 RUN apt-get update && apt-get install -t jessie-backports -y openjdk-8-jre-headless ca-certificates-java && update-alternatives --config java
