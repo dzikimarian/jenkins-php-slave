@@ -31,7 +31,8 @@ RUN apt-get update && apt-get install -t jessie-backports -y openjdk-8-jre-headl
 RUN curl -sL https://deb.nodesource.com/setup_6.x | bash - \
   && apt-get install -y nodejs \
   && npm install webpack -g \
-  && npm install gulp -g
+  && npm install gulp -g \
+  && npm install phantomjs -g
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 RUN sed -i 's|session required pam_loginuid.so|session optional pam_loginuid.so|g' /etc/pam.d/sshd
