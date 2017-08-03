@@ -28,12 +28,9 @@ RUN apt-get update && apt-get install -y \
 RUN echo deb http://http.debian.net/debian jessie-backports main >> /etc/apt/sources.list
 RUN apt-get update && apt-get install -t jessie-backports -y openjdk-8-jre-headless ca-certificates-java && update-alternatives --config java
 
-RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
-RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
-
 RUN curl -sL https://deb.nodesource.com/setup_6.x | bash - \
-  && apt-get install yarn \
   && apt-get install -y nodejs \
+  && npm install yarn -g \
   && yarn global add webpack \
   && yarn global add gulp \
   && npm install phantomjs -g \
