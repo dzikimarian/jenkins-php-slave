@@ -21,6 +21,7 @@ RUN apt-get update && apt-get install -y \
   && docker-php-ext-install -j$(nproc) exif \
   && docker-php-ext-configure intl \
   && docker-php-ext-install intl \
+  && docker-php-ext-install zip \
   && docker-php-ext-install pdo pdo_mysql pdo_sqlite \
   && pecl install xdebug-2.5.0 \
   && docker-php-ext-enable xdebug
