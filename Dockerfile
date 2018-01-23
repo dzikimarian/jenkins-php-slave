@@ -46,3 +46,4 @@ RUN echo "jenkins:jenkins" | chpasswd
 EXPOSE 22
 
 CMD ["/usr/sbin/sshd", "-D"]
+
