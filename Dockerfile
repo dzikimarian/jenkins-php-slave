@@ -28,6 +28,8 @@ RUN apt-get update && apt-get install -y \
   && docker-php-ext-install soap \
   && pecl install xdebug-2.5.0 \
   && docker-php-ext-enable xdebug
+  
+COPY php.ini /usr/local/etc/php/
 
 RUN echo deb http://http.debian.net/debian jessie-backports main >> /etc/apt/sources.list
 RUN apt-get update && apt-get install -t jessie-backports -y openjdk-8-jre-headless ca-certificates-java && update-alternatives --config java
