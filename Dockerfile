@@ -28,13 +28,17 @@ RUN apt-get update && apt-get install -y \
   && docker-php-ext-install soap \
   && pecl install xdebug-2.5.0 \
   && docker-php-ext-enable xdebug
+  
+COPY php.ini /usr/local/etc/php/
 
 RUN echo deb http://http.debian.net/debian jessie-backports main >> /etc/apt/sources.list
 RUN apt-get update && apt-get install -t jessie-backports -y openjdk-8-jre-headless ca-certificates-java && update-alternatives --config java
 
-RUN curl -sL https://deb.nodesource.com/setup_6.x | bash - \
+RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - \
   && apt-get install -y nodejs \
-  && npm install -g yarn webpack gulp browserify phantomjs karma-phantomjs-launcher @angular/cli
+  && apt-get install -y build-essential \
+  && npm install -g yarn webpack gulp browserify karma-phantomjs-launcher @angular/cli phantomjs@2.1.1 --unsafe-perm
+
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 RUN sed -i 's|session required pam_loginuid.so|session optional pam_loginuid.so|g' /etc/pam.d/sshd
 RUN mkdir -p /var/run/sshd
