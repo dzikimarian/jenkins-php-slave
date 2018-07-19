@@ -43,7 +43,8 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 RUN sed -i 's|session required pam_loginuid.so|session optional pam_loginuid.so|g' /etc/pam.d/sshd
 RUN mkdir -p /var/run/sshd
 RUN adduser --quiet jenkins
-RUN chmod 775 /usr/local/lib/php/extensions/no-debug-non-zts-20160303/xdebug.so
+RUN chmod 777 /usr/local/lib/php/extensions/no-debug-non-zts-20160303
+RUN chmod 777 /usr/local/lib/php/extensions/no-debug-non-zts-20160303/xdebug.so
 
 RUN echo "jenkins:jenkins" | chpasswd
 
