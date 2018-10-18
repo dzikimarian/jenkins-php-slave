@@ -3,6 +3,7 @@ FROM php:7.1.11-cli
 RUN apt-get update && apt-get install -y \
   git \
   curl \
+  wget \
   libfreetype6-dev \
   libjpeg62-turbo-dev \
   libmcrypt-dev \
@@ -28,7 +29,7 @@ RUN apt-get update && apt-get install -y \
   && docker-php-ext-install soap \
   && pecl install xdebug-2.5.0 \
   && docker-php-ext-enable xdebug
-  
+
 COPY php.ini /usr/local/etc/php/
 
 RUN echo deb http://http.debian.net/debian jessie-backports main >> /etc/apt/sources.list
@@ -51,4 +52,3 @@ RUN echo "jenkins:jenkins" | chpasswd
 EXPOSE 22
 
 CMD ["/usr/sbin/sshd", "-D"]
-
