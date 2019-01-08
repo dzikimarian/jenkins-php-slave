@@ -30,6 +30,9 @@ RUN apt-get update && apt-get install -y \
   && pecl install xdebug-2.5.0 \
   && docker-php-ext-enable xdebug
 
+ENV JAVA_OPTS -Dfile.encoding=UTF-8 \
+              -Dsun.jnu.encoding=UTF-8
+
 COPY php.ini /usr/local/etc/php/
 
 RUN echo deb http://http.debian.net/debian jessie-backports main >> /etc/apt/sources.list
