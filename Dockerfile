@@ -38,7 +38,7 @@ COPY php.ini /usr/local/etc/php/
 RUN echo deb http://http.debian.net/debian jessie-backports main >> /etc/apt/sources.list
 RUN apt-get update && apt-get install -t jessie-backports -y openjdk-8-jre-headless ca-certificates-java && update-alternatives --config java
 
-RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - \
+RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - \
   && apt-get install -y nodejs \
   && apt-get install -y build-essential \
   && npm install -g npm yarn gulp-cli browserify @angular/cli
